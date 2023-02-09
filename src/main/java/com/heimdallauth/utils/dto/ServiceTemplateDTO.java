@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ServiceVersion {
+public class ServiceTemplateDTO {
     private String templateName;
     private String templateVersion;
     private ImageRepresentation apiGateway;
