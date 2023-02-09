@@ -10,16 +10,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document
+@Document(collection = "template-collection")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class VersionsConfiguration {
+public class TemplateCollection {
     @Id
-    private String versionId;
-    private ImageRepresentation serviceDiscoveryImage;
-    private List<ImageRepresentation> frontendDeploymentImages;
+    private String id;
     private ImageRepresentation apiGateway;
+    private List<ImageRepresentation> frontends;
     private List<ImageRepresentation> microservices;
+    private String serviceDNS;
+    private ImageRepresentation datastoreImage;
+    private ImageRepresentation serviceDiscoveryImage;
+    private ImageRepresentation vaultImage;
 }
