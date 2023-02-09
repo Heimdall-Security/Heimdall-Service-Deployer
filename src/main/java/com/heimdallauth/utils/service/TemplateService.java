@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import java.io.IOException;
 
 public class TemplateService {
-    @Value("constants.report.processor")
+    @Value("${constants.report.processor}")
     private String reportProcessorEndpoint;
     private static final String API_REPORT_ENDPOINT = "/api/report";
     private static final ObjectMapper JSON_CONVERTOR = new ObjectMapper();
