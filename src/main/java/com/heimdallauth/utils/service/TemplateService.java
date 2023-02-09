@@ -53,7 +53,7 @@ public class TemplateService {
         } else if (!httpResponse.isSuccessful() && httpResponse.code() == UNAUTHORIZED_CODE) {
             throw new DownstreamServiceException(httpResponse.body().string(), httpResponse.request().url().toString());
         } else {
-            throw new DownstreamServiceException("Unkown", httpResponse.request().url().toString());
+            throw new DownstreamServiceException("Unknown Error", httpResponse.request().url().toString());
         }
     }
 
