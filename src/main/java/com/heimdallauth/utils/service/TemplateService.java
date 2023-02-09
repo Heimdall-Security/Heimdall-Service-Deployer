@@ -7,10 +7,13 @@ import com.heimdallauth.utils.constants.TemplateEngine;
 import com.heimdallauth.utils.dto.template.request.TemplateProcessRequestDTO;
 import com.heimdallauth.utils.dto.template.templates.HeimdallStackDeploymentInformation;
 import com.heimdallauth.utils.exceptions.DownstreamServiceException;
+import jakarta.annotation.PostConstruct;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 public class TemplateService {
     @Value("${constants.report.processor}")
@@ -20,10 +23,22 @@ public class TemplateService {
     private static final OkHttpClient HTTP_CLIENT = new OkHttpClient();
     private static final MediaType JSON_MEDIA = MediaType.parse("application/json; charset=utf-8");
     private static final int UNAUTHORIZED_CODE = 401;
+    private Map<ServiceConstants, String> cacheMap;
+
+    @PostConstruct
+    public void initComponent() {
+        updateCacheTemplate();
+    }
+
+    private void updateCacheTemplate() {
+        List<ServiceConstants> serviceConstantsList = List.of(ServiceConstants.values());
+        cacheMap.clear();
+        serviceConstantsList.stream().forEach(service -> cacheMap.put(service, fetchTemplate(service)));
+    }
 
     public String processedTemplate(ServiceConstants service, HeimdallStackDeploymentInformation stackDeploymentInformation) {
         TemplateProcessRequestDTO processingRequest = TemplateProcessRequestDTO.builder()
-                .content(fetchTemplate(service))
+                .content(cacheMap.get(service))
                 .data(stackDeploymentInformation)
                 .engine(TemplateEngine.HANDLEBARS)
                 .recipe(Recipe.TEXT)
