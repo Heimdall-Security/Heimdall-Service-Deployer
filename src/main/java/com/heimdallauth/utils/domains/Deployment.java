@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.util.List;
 
 @Document(collection = "deployments-collection")
@@ -27,4 +28,8 @@ public class Deployment {
     private List<FrontendService> frontendServices;
     private List<APIGatewayService> apiGatewayService;
     private List<ServiceRepresentation> serviceRepresentation;
+    private Instant createdOn;
+    private Instant updatedOn;
+
+    private String fullyQualifiedDomainName;
 }
