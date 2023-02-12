@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class ServiceTemplateDTO {
+    private String templateId;
     private String templateName;
     private String templateVersion;
     private ImageRepresentation apiGateway;
