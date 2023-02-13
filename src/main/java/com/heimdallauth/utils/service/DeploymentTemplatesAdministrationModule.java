@@ -41,6 +41,10 @@ public class DeploymentTemplatesAdministrationModule {
         return MODEL_CONVERTOR.map(savedTemplate, ServiceTemplateDTO.class);
     }
 
+    public void deleteExistingTemplate(String templateId) {
+        this.mongoTemplate.findAndRemove(Query.query(Criteria.where("templateId").is(templateId)), TemplateCollection.class);
+    }
+
     public List<ServiceTemplateDTO> fetchServiceTemplates(ServiceConstants service) {
         List<TemplateCollection> templates = this.getTemplates(service);
         return templates.stream().map(template -> MODEL_CONVERTOR.map(template, ServiceTemplateDTO.class)).toList();
