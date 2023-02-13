@@ -1,5 +1,6 @@
 package com.heimdallauth.utils.domains;
 
+import com.heimdallauth.utils.constants.ServiceConstants;
 import com.heimdallauth.utils.representations.ImageRepresentation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.util.List;
 
 @Document(collection = "template-collection")
@@ -25,4 +27,8 @@ public class TemplateCollection {
     private ImageRepresentation datastoreImage;
     private ImageRepresentation serviceDiscoveryImage;
     private ImageRepresentation vaultImage;
+    private ServiceConstants service;
+    private int version;
+    private Instant createdOn;
+    private Instant updatedOn;
 }

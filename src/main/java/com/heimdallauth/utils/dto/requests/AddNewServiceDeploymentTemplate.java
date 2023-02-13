@@ -14,8 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class AddNewServiceDeploymentTemplate {
-    private String templateName;
-    private String templateVersion;
+    private String serviceDNS;
     private ImageRepresentation apiGateway;
     private List<ImageRepresentation> frontends;
     private List<ImageRepresentation> microservices;

@@ -13,15 +13,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ServiceVersion {
-    private String templateName;
-    private String templateVersion;
+public class ServiceTemplateDTO {
+    private String templateId;
+    private ServiceConstants service;
+    private int version;
     private ImageRepresentation apiGateway;
     private List<ImageRepresentation> frontends;
     private List<ImageRepresentation> microservices;
     private ImageRepresentation serviceDiscovery;
     private ImageRepresentation datastore;
-    private ServiceConstants service;
     private Boolean isLatest;
     private Boolean isActive;
+    private String createdOn;
+    private String updatedOn;
 }
