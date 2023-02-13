@@ -15,14 +15,15 @@ import java.util.List;
 @Data
 public class ServiceTemplateDTO {
     private String templateId;
-    private String templateName;
-    private String templateVersion;
+    private ServiceConstants service;
+    private int version;
     private ImageRepresentation apiGateway;
     private List<ImageRepresentation> frontends;
     private List<ImageRepresentation> microservices;
     private ImageRepresentation serviceDiscovery;
     private ImageRepresentation datastore;
-    private ServiceConstants service;
     private Boolean isLatest;
     private Boolean isActive;
+    private String createdOn;
+    private String updatedOn;
 }

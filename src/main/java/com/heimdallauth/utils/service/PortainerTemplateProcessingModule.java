@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class TemplateService {
+public class PortainerTemplateProcessingModule {
     @Value("${constants.report.processor}")
     private String reportProcessorEndpoint;
     private static final String API_REPORT_ENDPOINT = "/api/report";
