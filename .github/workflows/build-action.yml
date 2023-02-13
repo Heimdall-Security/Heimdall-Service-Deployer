@@ -7,8 +7,6 @@ on:
     tags:
       - 'v*.*.*'
       - '*.*.*'
-    branches:
-      - 'develop'
 permissions:
   contents: read
   packages: write
@@ -48,7 +46,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            ghcr.io/mayanksoni1996/portainer-service-deployer
+            ghcr.io/heimdall-security/heimdall-service-deployer
 
           tags: |
             type=schedule
