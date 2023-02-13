@@ -1,0 +1,27 @@
+name: Test Spring Boot Backend
+on:
+  push:
+    branches:
+      - 'develop'
+permissions:
+  contents: read
+  packages: write
+jobs:
+  gradle-build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Gradle Validation
+        uses: gradle/wrapper-validation-action@v1
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - run: chmod +x ./gradlew
+      - run: gradle build -x test
+        env:
+          GHCR_ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
